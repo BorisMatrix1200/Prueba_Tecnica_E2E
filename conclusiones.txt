@@ -1,0 +1,57 @@
+===================================================
+CONCLUSIONES DEL EJERCICIO
+===================================================
+
+1. IMPLEMENTACIÓN DE ESPERAS EXPLÍCITAS
+---------------------------------------
+El uso de `WaitUntil` antes de realizar `Enter.theValue(...)` mejora la
+estabilidad de las pruebas, evitando errores de tipo:
+    - ElementNotInteractableException
+    - ElementNotVisibleException
+
+Esto asegura que los campos estén visibles antes de interactuar.
+
+2. OPTIMIZACIÓN DEL CÓDIGO
+--------------------------
+La creación de una Tarea personalizada (`LlenarFormularioCompra`) permitió:
+- Mejorar la legibilidad de los Step Definitions.
+- Reutilizar la lógica en múltiples escenarios.
+- Centralizar cambios futuros sin modificar varias clases.
+
+3. MANEJO DE POPUPS DE CHROME
+-----------------------------
+El popup del gestor de contraseñas de Chrome no es manejable desde Selenium
+porque es un elemento nativo del navegador. La solución fue desactivarlo
+desde las preferencias de Chrome antes de abrir el navegador.
+
+Con el archivo: serenity.conf
+
+webdriver {
+  driver = chrome
+}
+
+chrome {
+  switches = [
+    "--disable-save-password-bubble"
+  ]
+  preferences {
+    "credentials_enable_service" = false
+    "profile.password_manager_enabled" = false
+  }
+}
+
+4. EVIDENCIAS DE PRUEBA
+-----------------------
+El uso de `TomarScreenshot` en puntos clave del flujo permite generar
+evidencia clara de la ejecución, lo cual es útil para reportes y auditorías.
+
+5. RESULTADO FINAL
+------------------
+El proyecto quedó con:
+- Patrón Screenplay bien estructurado.
+- Pruebas estables con esperas explícitas.
+- Configuración de navegador optimizada para evitar interrupciones.
+- Reportes HTML completos y con evidencias gráficas.
+
+En conclusión, la automatización ahora es más estable, reutilizable y fácil de
+mantener, cumpliendo con las buenas prácticas recomendadas en Serenity BDD.
