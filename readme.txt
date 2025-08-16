@@ -3,7 +3,7 @@ INSTRUCCIONES DE EJECUCIÓN DEL PROYECTO
 ===================================================
 
 1. PRERREQUISITOS
------------------
+=================
 - Java JDK 17 instalado y configurado en el PATH.
   - Adicional configurar el JAVA_HOME y el MAVEN_HOME
 - Maven 3.8+ instalado y configurado en el PATH.
@@ -19,14 +19,14 @@ INSTRUCCIONES DE EJECUCIÓN DEL PROYECTO
   - SonarQube
 
 2. CLONAR EL PROYECTO
----------------------
+===================
 Ejecutar en consola:
     git clone <URL_DEL_REPOSITORIO>
     cd <CARPETA_DEL_PROYECTO>
 - Validar que todas las dependencias se descarguen correctamente 
 
 3. ESTRUCTURA DEL PROYECTO
---------------------------
+==========================
 El proyecto sigue el patrón Screenplay con Serenity BDD:
 - src/main/java: 
   - interactions = Acciones atómicas reutilizables que un actor puede realizar, más pequeñas que una Task. Ejemplo: hacer scroll, esperar a que un elemento sea      		   visible, presionar una tecla específica.
