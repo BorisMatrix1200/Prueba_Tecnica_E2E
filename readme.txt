@@ -66,7 +66,7 @@ Resumen visual de la lógica:
 
 
 4. CONFIGURACIÓN DE EJECUCIÓN
------------------------------
+=============================
 En `serenity.conf`, asegurar que se incluyen las preferencias para desactivar
 el gestor de contraseñas de Chrome y evitar popups nativos.
 
@@ -80,7 +80,7 @@ chrome {
 }
 
 5. EJECUCIÓN DE LAS PRUEBAS
----------------------------
+===========================
 Para ejecutar todas las pruebas:
     mvn clean verify
 
@@ -91,7 +91,7 @@ También se puede hacer
     clic derecho sobre la clase LoginTestRunner en la opción Run'LoginTestRunner'
 
 6. REPORTES
------------
+=======================
 Para generar los reportes de forma manual, en la parte derecha del IDE existe una opción de Maven con la letra (M)
 Abrir esta opción 
 - Plugins
@@ -111,10 +111,10 @@ El reporte incluye:
 - Detalles de errores y tiempos de ejecución.
 
 En la ruta
-- screenshots
+- resourses/screenshots
 Se encuentran los screenshots de cada paso en la ejecución de las pruebas con sus respectivos nombres
 
-
+================================================================================================================================================
 7. NOTAS
 --------
 - No es necesario instalar ChromeDriver manualmente, ya que este esta configurado para usar automáticamente la    versión mas reciente disponible
