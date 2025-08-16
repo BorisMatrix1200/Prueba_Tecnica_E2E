@@ -114,9 +114,9 @@ En la ruta
 - resourses/screenshots
 Se encuentran los screenshots de cada paso en la ejecución de las pruebas con sus respectivos nombres
 
-================================================================================================================================================
+========
 7. NOTAS
---------
+========
 - No es necesario instalar ChromeDriver manualmente, ya que este esta configurado para usar automáticamente la    versión mas reciente disponible
 - Si aparece un popup del gestor de contraseñas de Chrome, verificar que las
   preferencias en `serenity.conf` están correctamente configuradas.
