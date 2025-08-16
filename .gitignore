@@ -1,0 +1,32 @@
+# Ignorar archivos generados de compilación y salida
+/target/
+
+# Archivos de configuración del sistema
+*.log
+*.class
+*.swp
+*.swo
+*.tmp
+
+# Configuración de IDEs comunes
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de Serenity
+.serenity/
+.serenity-cache/
+

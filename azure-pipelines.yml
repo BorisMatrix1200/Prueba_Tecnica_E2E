@@ -1,0 +1,55 @@
+trigger:
+  - main  # o cambia a 'master' si ese es tu branch principal
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+steps:
+  # Paso 1: Obtener el código fuente
+  - task: Checkout@1
+
+  # Paso 2: Cache de dependencias Maven
+  - task: Cache@2
+    inputs:
+      key: 'maven | "$(Agent.OS)" | **/pom.xml'
+      restoreKeys: |
+        maven | "$(Agent.OS)"
+      path: $(Pipeline.Workspace)/.m2/repository
+    displayName: 'Cache Maven dependencies'
+
+  # Paso 3: Configurar JDK 17
+  - task: UseJavaVersion@1
+    inputs:
+      versionSpec: '17'
+      architecture: 'x64'
+    displayName: 'Set up JDK 17'
+
+  # Paso 4: Ejecutar pruebas con Maven
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'clean verify'
+      options: '-DskipTests=false'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.17'
+      mavenVersionOption: 'Default'
+    displayName: 'Build and run Serenity tests'
+
+  # Paso 5: Publicar resultados JUnit (opcional pero recomendado)
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      failTaskOnFailedTests: true
+      testRunTitle: 'Serenity BDD Test Results'
+
+  # Paso 6: Publicar reporte Serenity en artefactos del pipeline
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: 'target/site/serenity'
+      artifactName: 'serenity-report'
+      publishLocation: 'Container'
