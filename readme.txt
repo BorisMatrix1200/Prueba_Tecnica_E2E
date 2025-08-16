@@ -21,7 +21,7 @@ INSTRUCCIONES DE EJECUCIÓN DEL PROYECTO
 2. CLONAR EL PROYECTO
 ===================
 Ejecutar en consola:
-    git clone <URL_DEL_REPOSITORIO>
+    git clone <https://github.com/BorisMatrix1200/Prueba_Tecnica_E2E.git>
     cd <CARPETA_DEL_PROYECTO>
 - Validar que todas las dependencias se descarguen correctamente 
 
